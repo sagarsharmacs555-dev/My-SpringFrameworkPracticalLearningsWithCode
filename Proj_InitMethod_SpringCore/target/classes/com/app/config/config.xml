@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	default-destroy-method="mydestroy"
+	default-init-method="myinit"
+	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean class="java.util.Date" id="dob1">
+		<property name="year" value="78"></property>
+		<property name="month" value="4"></property>
+		<property name="date" value="24"></property>
+	</bean>
+	
+	<bean class="java.util.Date" id="dob2">
+		<property name="year" value="104"></property>
+		<property name="month" value="5"></property>
+		<property name="date" value="4"></property>
+	</bean>
+	
+	<bean class="java.util.Date" id="dob3">
+		<property name="year" value="100"></property>
+		<property name="month" value="2"></property>
+		<property name="date" value="9"></property>
+	</bean>
+	
+	<bean class="com.app.beans.Employee" id="emp" >
+	<property name="name" value="SagarSharma"></property>
+	<property name="date" ref= "dob3"></property>
+</bean>
+
+	<bean class="com.app.beans.Student" id="stu" >
+	<property name="name" value="BhaskarSharma"></property>
+	<property name="date" ref= "dob2"></property>
+</bean>
+
+	<bean class="com.app.beans.User" id="user" >
+	<property name="name" value="ManjuSharma"></property>
+	<property name="date" ref= "dob1"></property>
+</bean>
+
+<bean class="com.app.beans.DebitCard" id="debitCard"
+	init-method="afterPropertiesSet" destroy-method="destroy">
+	<property name="accountHolderName" value="SagarSharma"></property>
+</bean>
+
+
+<bean class="com.app.beans.CreditCard" id="creditCard"
+	init-method="init" destroy-method="destroy">
+	<property name="accountHolderName" value="RamanSharma"></property>
+</bean>
+
+
+<context:annotation-config></context:annotation-config>
+
+</beans>

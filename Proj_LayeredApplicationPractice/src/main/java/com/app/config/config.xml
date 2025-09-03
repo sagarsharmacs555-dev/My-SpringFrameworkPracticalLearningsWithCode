@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean class = "org.springframework.jdbc.datasource.DriverManagerDataSource" id = "dataSource">
+	<property name="url" value = "jdbc:mysql://localhost:3306/finisher9.0"></property>
+	<property name="driverClassName" value = "com.mysql.cj.jdbc.Driver"></property>
+	
+	<property name="connectionProperties">
+		<props>
+			<prop key="user">root</prop>
+			<prop key="password">root</prop>
+		</props>
+	</property>
+	
+	</bean>
+	
+	<bean class = "com.app.dao.StudentDaoImp" id = "studentDao">
+	<constructor-arg name = "dataSource" ref = "dataSource"></constructor-arg>
+	</bean>
+	
+	<bean class = "com.app.service.StudentServiceImp" id = "studentService">
+	<constructor-arg name = "studentDao" ref = "studentDao"></constructor-arg>
+	
+	</bean>
+	
+	<bean class = "com.app.controller.StudentController" id = "studentController">
+	<constructor-arg name = "studentServie" ref = "studentService"></constructor-arg>
+	</bean>
+
+</beans>
