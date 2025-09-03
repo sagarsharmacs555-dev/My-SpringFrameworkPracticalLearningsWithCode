@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	
+	<bean class = "com.app.beans.Shipprocket" id = "shipprocket"></bean>
+
+	<bean class="com.app.beans.Bluedart" id="bluedart"></bean>
+
+	<bean class="com.app.beans.Amazon" id="amazon">
+
+		<constructor-arg name="bluedart" ref="bluedart"></constructor-arg>
+
+		<constructor-arg name="ShippmentName" value="bluedart"></constructor-arg>
+		
+		<property name="bluedart" ref = "shipprocket"></property>
+
+
+	</bean>
+
+</beans>
